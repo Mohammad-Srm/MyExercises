@@ -6,11 +6,14 @@ body{
 form{
     background-color: #fff ;
     margin-top: 100px;
-    width: 250px;
+    width: 205px;
     padding: 25px 15px;
     border-radius: 15px;
 }
+input{
+    max-width:115px;
+}
 #age{
     margin-left: 44px;
-    padding: 0 67px;
+    padding: 0 42px;
 }
