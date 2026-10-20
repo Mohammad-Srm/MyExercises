@@ -1,0 +1,13 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C4B4FF;
+}
+div{
+    margin-top: 50px;
+    max-width: 60%;
+}
+h3, p{
+    color: #193CB8;    
+}
