@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammad | My Exercises</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b1020;
+      color: #f8fafc;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 15% 20%, #4338ca44, transparent 35%),
+        radial-gradient(circle at 85% 75%, #0891b244, transparent 35%);
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ffffff15;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #818cf8;
+    }
+
+    .status {
+      font-size: 0.85rem;
+      color: #a7f3d0;
+      background: #10b98118;
+      border: 1px solid #10b98140;
+      padding: 9px 14px;
+      border-radius: 30px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 85px 0 55px;
+      animation: appear 0.8s ease both;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: #a5b4fc;
+      border: 1px solid #818cf844;
+      background: #818cf815;
+      border-radius: 30px;
+      padding: 8px 15px;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 4.8rem);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #818cf8, #67e8f9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: #a8b1c7;
+      max-width: 580px;
+      margin: auto;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 0 25px;
+      gap: 15px;
+    }
+
+    .section-heading h2 {
+      font-size: 1.5rem;
+    }
+
+    .section-heading p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      padding-bottom: 75px;
+    }
+
+    .card {
+      --accent: #818cf8;
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      min-height: 265px;
+      border: 1px solid #ffffff16;
+      border-radius: 22px;
+      background: #151c30cc;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.3s ease, border-color 0.3s ease,
+                  box-shadow 0.3s ease;
+      animation: appear 0.7s ease both;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.12s;
+      --accent: #34d399;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.24s;
+      --accent: #fbbf24;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: -65px;
+      top: -65px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.10;
+      filter: blur(5px);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 18px 45px #00000035;
+    }
+
+    .icon {
+      width: 55px;
+      height: 55px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+      color: var(--accent);
+      font-size: 1.7rem;
+      margin-bottom: 25px;
+    }
+
+    .number {
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #9ca9bf;
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+      color: #f8fafc;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: gap 0.2s ease;
+    }
+
+    .project-link:hover {
+      gap: 16px;
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid #ffffff15;
+      padding: 25px 0;
+      color: #8290a8;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    footer span {
+      color: #a5b4fc;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .card {
+        min-height: 240px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background"></div>
+
+  <div class="container">
+    <header>
+      <div class="logo">MOHAMMAD<span>.</span></div>
+      <div class="status">● Portfolio Online</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">MY WEB DEVELOPMENT JOURNEY</div>
+        <h1>My <span>Exercises.</span></h1>
+        <p>
+          Welcome to my web development practice space.
+          Explore my HTML, CSS and JavaScript exercises below.
+        </p>
+      </section>
+
+      <section aria-labelledby="projects-title">
+        <div class="section-heading">
+          <h2 id="projects-title">Featured Projects</h2>
+          <p>03 Projects · HTML / CSS / JavaScript</p>
+        </div>
+
+        <div class="projects">
+          <article class="card">
+            <div class="icon" aria-hidden="true">▤</div>
+            <div class="number">PROJECT 01</div>
+            <h3>Form Exercise</h3>
+            <p>A form project built to practice web page structure and styling.</p>
+            <a class="project-link" href="./Form/">
+              View Project <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">▦</div>
+            <div class="number">PROJECT 02</div>
+            <h3>Table Exercise</h3>
+            <p>A table exercise focused on organizing and presenting information.</p>
+            <a class="project-link" href="./Table/">
+              View Project <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">◫</div>
+            <div class="number">PROJECT 03</div>
+            <h3>Single Page</h3>
+            <p>A single-page website created to practice layout and design.</p>
+            <a class="project-link" href="./Single%20Page/">
+              View Project <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Designed & built by <span>Mohammad</span> · 2026
+    </footer>
+  </div>
+</body>
+</html>
